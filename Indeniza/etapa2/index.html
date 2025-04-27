@@ -298,7 +298,7 @@
 
 .bg-green-500 {
     --tw-bg-opacity: 1;
-    background-color: rgb(34 197 94 / 1);
+    background-color: rgb(20 81 180);
 }
 
 .rounded-full {
@@ -827,7 +827,7 @@
     }
   
     function generateInitialComments() {
-      const texts = ["Tive medo, mas entrou R$ 2.400!", "Tive que pagar taxa, mas veio R$ 2.800 em 10min", "Recebi R$ 4.000 deu para pagar as contas kkk"];
+      const texts = ["Tive medo, mas entrou R$ 2.542!", "Tive que pagar taxa, mas veio R$ 2.876 em 10min", "Recebi R$ 4.005 deu para pagar as contas kkk"];
       texts.forEach(text => createRandomComment(text, true));
       elements.fbCountSpan.textContent = `Comentários: ${totalComments}`;
       elements.fbLoadingSpan.textContent = "Comentários atualizados.";
@@ -838,25 +838,25 @@
     function scheduleComments() {
       const messages = [
         "Alguém sabe se cai no mesmo dia se pagar agora?",
-  "Acabei de pagar a taxa e entrou R$ 3.200 em poucos minutos!",
-  "Fiz hoje cedo e liberou R$ 4.700 pra mim!",
-  "Demorou um pouco, mas caiu R$ 2.600 certinho!",
-  "Achei que era golpe, mas testei e recebi R$ 3.900",
-  "Valeu a pena, entrou R$ 5.500 na conta rapidinho",
+  "Acabei de pagar a taxa e entrou R$ 3.217 em poucos minutos!",
+  "Fiz hoje cedo e liberou R$ 4.730 pra mim!",
+  "Demorou um pouco, mas caiu R$ 2.699 certinho!",
+  "Achei que era golpe, mas testei e recebi R$ 3.912",
+  "Valeu a pena, entrou R$ 5.556 na conta rapidinho",
   "Com esse valor consegui pagar o aluguel e as contas!",
-  "Pix caiu R$ 3.450 em menos de 10 minutos!",
+  "Pix caiu R$ 3.457 em menos de 10 minutos!",
   "Estava desconfiado, mas liberou R$ 2.900 direitinho",
-  "Paguei agora e já caiu R$ 3.800, muito rápido!",
+  "Paguei agora e já caiu R$ 3.803, muito rápido!",
   "Consegui R$ 4.600, recomendo demais!",
-  "Funcionou pra mim também, entrou R$ 2.750 logo depois da taxa!",
-  "A taxa é alta, mas valeu, entrou R$ 4.350 aqui!",
-  "Paguei no boleto e demorou, mas caiu R$ 3.100 hoje cedo!",
-  "Alguém mais recebeu R$ 5.200? Aqui foi rapidinho!",
+  "Funcionou pra mim também, entrou R$ 2.752 logo depois da taxa!",
+  "A taxa é alta, mas valeu, entrou R$ 4.358 aqui!",
+  "Paguei no boleto e demorou, mas caiu R$ 3.110 hoje cedo!",
+  "Alguém mais recebeu R$ 5.570? Aqui foi rapidinho!",
   "Confirmei hoje, Pix de R$ 4.950 liberado em menos de 15 min!",
   "Testei só pra ver se era real e consegui R$ 3.600!",
-  "Caiu certinho, R$ 4.800 na conta agora há pouco!",
-  "Deu certo! R$ 2.850 liberados logo após pagar a taxa!",
-  "Muito rápido! Recebi R$ 5.700 e já usei para quitar as dívidas!"
+  "Caiu certinho, R$ 4.822 na conta agora há pouco!",
+  "Deu certo! R$ 2.851 liberados logo após pagar a taxa!",
+  "Muito rápido! Recebi R$ 5.764 e já usei para quitar as dívidas!"
       ];
   
       messages.forEach((msg, i) => {
