@@ -878,11 +878,32 @@
       if (!initialLoad) saveCommentsToLocal();
     }
   
-    async function getRandomUser() {
-  const response = await fetch('/Indeniza/api/randomuser.js');
-  const dataWrapped = await response.json();
-  const data = JSON.parse(dataWrapped.contents);
-  return data.results[0];
+    const preDefinedUsers = [
+  { name: "Carlos", avatar: "https://i.pravatar.cc/150?img=1" },
+  { name: "Fernanda", avatar: "https://i.pravatar.cc/150?img=2" },
+  { name: "Rafael", avatar: "https://i.pravatar.cc/150?img=3" },
+  { name: "Juliana", avatar: "https://i.pravatar.cc/150?img=4" },
+  { name: "Paulo", avatar: "https://i.pravatar.cc/150?img=5" },
+  { name: "Mariana", avatar: "https://i.pravatar.cc/150?img=6" },
+  { name: "Bruno", avatar: "https://i.pravatar.cc/150?img=7" },
+  { name: "Camila", avatar: "https://i.pravatar.cc/150?img=8" },
+  { name: "Lucas", avatar: "https://i.pravatar.cc/150?img=9" },
+  { name: "Patrícia", avatar: "https://i.pravatar.cc/150?img=10" },
+  { name: "Gustavo", avatar: "https://i.pravatar.cc/150?img=11" },
+  { name: "Letícia", avatar: "https://i.pravatar.cc/150?img=12" },
+  { name: "Eduardo", avatar: "https://i.pravatar.cc/150?img=13" },
+  { name: "Beatriz", avatar: "https://i.pravatar.cc/150?img=14" },
+  { name: "Rodrigo", avatar: "https://i.pravatar.cc/150?img=15" },
+  { name: "Larissa", avatar: "https://i.pravatar.cc/150?img=16" },
+  { name: "Felipe", avatar: "https://i.pravatar.cc/150?img=17" },
+  { name: "Amanda", avatar: "https://i.pravatar.cc/150?img=18" },
+  { name: "Thiago", avatar: "https://i.pravatar.cc/150?img=19" },
+  { name: "Vanessa", avatar: "https://i.pravatar.cc/150?img=20" }
+];
+
+async function getRandomUser() {
+  const randomIndex = Math.floor(Math.random() * preDefinedUsers.length);
+  return preDefinedUsers[randomIndex];
 }
   
     function saveCommentsToLocal() {
