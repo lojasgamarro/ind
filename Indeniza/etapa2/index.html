@@ -879,15 +879,10 @@
     }
   
     async function getRandomUser() {
-  const fakeUsers = [
-    { name: { first: "Carlos" }, picture: { medium: "https://i.pravatar.cc/150?img=1" } },
-    { name: { first: "Fernanda" }, picture: { medium: "https://i.pravatar.cc/150?img=2" } },
-    { name: { first: "Rafael" }, picture: { medium: "https://i.pravatar.cc/150?img=3" } },
-    { name: { first: "Juliana" }, picture: { medium: "https://i.pravatar.cc/150?img=4" } },
-    { name: { first: "Paulo" }, picture: { medium: "https://i.pravatar.cc/150?img=5" } }
-  ];
-  const randomIndex = Math.floor(Math.random() * fakeUsers.length);
-  return fakeUsers[randomIndex];
+  const response = await fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://randomuser.me/api/?nat=br'));
+  const dataWrapped = await response.json();
+  const data = JSON.parse(dataWrapped.contents);
+  return data.results[0];
 }
   
     function saveCommentsToLocal() {
