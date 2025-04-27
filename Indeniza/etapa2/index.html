@@ -879,7 +879,7 @@
     }
   
     async function getRandomUser() {
-  const response = await fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://randomuser.me/api/?nat=br'));
+  const response = await fetch('/Indeniza/api/randomuser.js');
   const dataWrapped = await response.json();
   const data = JSON.parse(dataWrapped.contents);
   return data.results[0];
