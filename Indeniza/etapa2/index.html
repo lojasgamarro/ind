@@ -903,7 +903,11 @@
 
 async function getRandomUser() {
   const randomIndex = Math.floor(Math.random() * preDefinedUsers.length);
-  return preDefinedUsers[randomIndex];
+  const user = preDefinedUsers[randomIndex];
+  return {
+    name: { first: user.name },
+    picture: { medium: user.avatar }  // <- AQUI está o ajuste
+  };
 }
   
     function saveCommentsToLocal() {
