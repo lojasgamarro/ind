@@ -879,10 +879,16 @@
     }
   
     async function getRandomUser() {
-      const res = await fetch('https://randomuser.me/api/?nat=br');
-      const data = await res.json();
-      return data.results[0];
-    }
+  const fakeUsers = [
+    { name: { first: "Carlos" }, picture: { medium: "https://i.pravatar.cc/150?img=1" } },
+    { name: { first: "Fernanda" }, picture: { medium: "https://i.pravatar.cc/150?img=2" } },
+    { name: { first: "Rafael" }, picture: { medium: "https://i.pravatar.cc/150?img=3" } },
+    { name: { first: "Juliana" }, picture: { medium: "https://i.pravatar.cc/150?img=4" } },
+    { name: { first: "Paulo" }, picture: { medium: "https://i.pravatar.cc/150?img=5" } }
+  ];
+  const randomIndex = Math.floor(Math.random() * fakeUsers.length);
+  return fakeUsers[randomIndex];
+}
   
     function saveCommentsToLocal() {
       localStorage.setItem('commentsData', JSON.stringify(storedComments));
